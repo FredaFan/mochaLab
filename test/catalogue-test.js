@@ -38,4 +38,3 @@ describe("Catalogue", () => {
   });
 
 });
-console.log('before block')
