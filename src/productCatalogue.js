@@ -25,6 +25,13 @@ class Catalogue {
     }
     return removedProduct;
   }
+  batchAddProducts(batch) {
+    batch.products.forEach( p => 
+       this.addProduct(p)
+    )
+    return batch.products.length
+  }
+
   checkReorders() {
     const result = { type: "Reorder", productIds: [] };
     result.productIds = this.products
