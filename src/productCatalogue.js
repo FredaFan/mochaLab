@@ -74,9 +74,15 @@ class Catalogue {
     result.productIds = this.products
       .filter((p) => p.price <= ans.price)
       .map((p) => p.id);
+      return result;
   }
-  
-return result;
+
+    if (ans.keyword){
+    result.productIds = this.products
+      .filter((p) => p.name.search(ans.keyword)>=0)
+      .map((p) => p.id);
+      return result;
+}
 }
 }
 

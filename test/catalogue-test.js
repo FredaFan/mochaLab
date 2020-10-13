@@ -109,6 +109,12 @@ describe("Catalogue", () => {
             expect(result.productIds).to.have.members(["A123", "A124", "A125", "C121", "C122"]);     
             
     });
+    it("should return products with 'sho' in the name", () => {
+      const result = cat.conditionalSearch({ keyword: 'sho' })
+      expect(result.productIds).to.have.lengthOf(2);
+      expect(result.productIds).to.have.members(["C121", "C122"]);
+      
+      });
   });
   });
 });
