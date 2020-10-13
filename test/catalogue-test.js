@@ -115,6 +115,9 @@ describe("Catalogue", () => {
       expect(result.productIds).to.have.members(["C121", "C122"]);
       
       });
+      it("should throw with the message 'Bad search' when the creturn products have neither key", () => {
+        expect(() => cat.conditionalSearch({keyword: "Widget"})).to.throw("Bad Search");
+      });
   });
   });
 });

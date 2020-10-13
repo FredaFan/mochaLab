@@ -76,14 +76,18 @@ class Catalogue {
       .map((p) => p.id);
       return result;
   }
-
     if (ans.keyword){
     result.productIds = this.products
       .filter((p) => p.name.search(ans.keyword)>=0)
       .map((p) => p.id);
-      return result;
+      
+       if(result.productIds.length===0) {
+        throw new Error("Bad Search");
 }
+return result;
+    }
 }
+
 }
 
 module.exports = Catalogue;
