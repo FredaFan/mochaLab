@@ -10,7 +10,7 @@ describe("Catalogue", () => {
   beforeEach( () => {
     cat = new Catalogue("Test Catalogue");
     cat.addProduct(new Product("A123", "Product 1", 100, 10, 10.0));
-    cat.addProduct(new Product("A124", "Product 2", 100, 10.0));
+    cat.addProduct(new Product("A124", "Product 2", 100, 10, 10.0));
     cat.addProduct(new Product("A125", "Product 3", 100, 10, 10.0));
   });
   describe("findProductById", function () {
@@ -65,6 +65,7 @@ describe("Catalogue", () => {
             products: [
               new Product("A126", "Product 6", 100, 10, 10.0),
               new Product("A127", "Product 7", 100, 10, 10.0),
+        
             ],
           };
         });
@@ -90,8 +91,25 @@ describe("Catalogue", () => {
             let rejectedProduct = cat.findProductById("A126");
             expect(rejectedProduct).to.be.undefined; 
           });
-        
+      
+          describe("search", () => {
+            beforeEach(function () {
+              batch = {
+                type: 'search',
+                products: [
+                  new Product("C121", "shoes", 100, 10, 22.0),
+                  new Product("C122", "shoulder bag", 100, 10, 24.0),
+                ],
+              };
+              const result = cat.batchAddProducts(batch);
+            });
+            it("should return products cheaper than €25.01", () => {
+            const result = cat.conditionalSearch({ price: 25.00})
+            expect(result.productIds).to.have.lengthOf(5);
+            expect(result.productIds).to.have.members(["A123", "A124", "A125", "C121", "C122"]);     
+            
     });
-    
   });
+  });
+});
 });

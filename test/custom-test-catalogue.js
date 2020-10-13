@@ -3,7 +3,7 @@ const Product = require("../src/product");
 // Setup
 const cat = new Catalogue("Test Catalogue");
 cat.addProduct(new Product("A123", "Product 1", 100, 10, 10.0));
-cat.addProduct(new Product("A124", "Product 2", 100, 10.0));
+cat.addProduct(new Product("A124", "Product 2", 100, 10, 10.0));
 cat.addProduct(new Product("A125", "Product 3", 100, 10, 10.0));
 
 // Test findProductById
